@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Reference
 
+[React-metamask-auth](https://github.com/ishan-is-me/React-metamask-auth)  
 issues [Web3 Webpack<5](https://github.com/JacobHsu/react-notes/blob/main/web3.md) config-overrides
 
 ## Available Scripts

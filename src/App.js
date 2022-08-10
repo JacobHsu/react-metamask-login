@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import './App.css';
-const MetamaskLogo = 'https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg';
+const MetamaskLogo =
+  'https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg';
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -73,6 +74,12 @@ function App() {
     }
   };
 
+  const onDisconnect = () => {
+    window.localStorage.removeItem('userAccount');
+    setUserInfo({});
+    setIsConnected(false);
+  };
+
   return (
     <div className="app">
       <header className="app-header">
@@ -85,6 +92,30 @@ function App() {
             <button className="app-buttons__login" onClick={onConnect}>
               Connect to MetaMask
             </button>
+          </div>
+        )}
+        {isConnected && (
+          <div className="app-wrapper">
+            <div className="app-details">
+              <h2>✅ You are connected to metamask.</h2>
+              <div className="app-account">
+                <span>Account number:</span>
+                {userInfo.account}
+              </div>
+              <div className="app-balance">
+                <span>Balance:</span>
+                {userInfo.balance}
+              </div>
+              <div className="app-connectionid">
+                <span>Connection ID:</span>
+                {userInfo.connectionid}
+              </div>
+            </div>
+            <div>
+              <button className="app-buttons__logout" onClick={onDisconnect}>
+                Disconnect
+              </button>
+            </div>
           </div>
         )}
       </div>
